@@ -7,6 +7,7 @@ class Dashboard extends CI_Controller{
 
         $data['title'] = $this->session->userdata('level');
         $data['administrator'] = $this->db->get_where('tbl_user', ['nip' => $this->session->userdata('nip')])->row_array();
+        $data['siswa'] = $this->db->get_where('tbl_siswa', ['nis' => $this->session->userdata('nis')])->row_array();        
         
         $this->load->view('templates/header', $data);
         $this->load->view('dashboard/topbar', $data);

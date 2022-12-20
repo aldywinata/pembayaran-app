@@ -15,14 +15,14 @@
     <li class="nav-item dropdown pe-3">
 
       <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-        <img src="<?= base_url('assets/imgs/') ?>img-users/default_img.png" alt="Profile" class="rounded-circle">
-        <span class="d-none d-md-block dropdown-toggle ps-2"><?= $administrator['nama_user']; ?></span>
+      <img src="<?= base_url('assets/imgs/img-users/') ?><?= $siswa['img_siswa'] ?>" alt="Profile" class="rounded-circle">
+        <span class="d-none d-md-block dropdown-toggle ps-2"><?= $siswa['nama_siswa']; ?></span>
       </a><!-- End Profile Iamge Icon -->
 
       <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
         <li class="dropdown-header">
-          <h6><?= $administrator['nama_user'] ?></h6>
-          <span><?= $administrator['nip'] ?></span>
+          <h6><?= $siswa['nama_siswa'] ?></h6>
+          <span><?= $siswa['nis'] ?></span>
         </li>
         <li>
           <hr class="dropdown-divider">

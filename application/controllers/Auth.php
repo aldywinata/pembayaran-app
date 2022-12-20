@@ -50,7 +50,7 @@ class Auth extends CI_Controller {
 				if( $users['level'] == 'ADMINISTRATOR' ){
 					redirect('dashboard');
 				}elseif ( $users['level'] == 'PIMPINAN' ){
-					redirect('pimpinan');
+					redirect('dashboard');
 				}elseif( $users['level'] == 'PETUGAS' ){
 					redirect('petugas');
 				}else{

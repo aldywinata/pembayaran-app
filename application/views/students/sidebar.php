@@ -83,7 +83,7 @@
         </li><!-- End Data Users -->
 
         <li class="nav-item">
-            <a class="nav-link collapsed" href="<?= base_url() ?>Laporan">
+            <a class="nav-link collapsed" href="users-profile.html">
             <i class="bi bi-printer"></i>
             <span>Print Laporan</span>
             </a>

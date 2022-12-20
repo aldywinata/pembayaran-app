@@ -58,7 +58,6 @@
                                 <form action="<?= base_url('InputPembayaran/') ?>add" method="post">
 
                                     <input type="hidden" name="kode_pembayaran" value="<?= $kodeGenerate ?>">
-                                    <input type="hidden" name="kode_pembayaran_detail" value="<?= $kodeGenerateDP ?>">
                                     <input type="hidden" name="nis" value="<?= $students['nis'] ?>">
                                     <!-- <input type="text" name="id[]" value=""> -->
 
@@ -70,26 +69,28 @@
                                                 </button>
                                             </h2>
                                             <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                                      
-                                                <?php foreach( $bulans as $bulan ) : ?>
-                                                    <div class="accordion-body">
-                                                    <?php foreach( $jenis_tagihan as $tagihan ) : ?>
-                                                        <?php if( $tagihan['kode_tahun_ajaran'] == $students['kode_tahun_ajaran'] ) : ?>
-                                                            <?php if( $tagihan['nama_tagihan'] == 'SPP' ) : ?>
-                                                                    <input class="form-check-input" type="checkbox" name="kode_tagihan[]" value="<?= $tagihan['kode_tagihan'] ?>">
-                                                                    <input type="hidden" name="keterangan[]"  value="<?= $bulan ?>">
-                                                                    <input type="hidden" name="nominal[]"  value="<?= $tagihan['nominal'] ?>">
-                                                                    <label class="form-check-label">
-                                                                        <?= $tagihan['nama_tagihan'].' ' .$bulan ?>
-                                                                    </label> <br>
-                                                                    <label class="form-check-label text-danger ms-4">
-                                                                        Rp. <?= $tagihan['nominal'] ?>
-                                                                    </label>
+                                                <div class="accordion-body">
+                                                    <?php foreach ($bulans as $bulan) : ?>
+                                                        <?php foreach( $jenis_tagihan as $value ) : ?>
+                                                            <?php if( $value['kode_tahun_ajaran'] == $students['kode_tahun_ajaran'] ) : ?>
+                                                                <?php if( $value['nama_tagihan'] == 'SPP' ) : ?>
+                                                                    <div class="form-check mb-2">
+                                                                        <input class="form-check-input" type="checkbox" name="kode_tagihan[]" value="<?= $value['kode_tagihan'] ?>">
+                                                                        <!-- <input type="hidden" name="kode_tagihan[]" value="<?= $value['kode_tagihan'] ?>"> -->
+                                                                        <input type="hidden" name="keterangan[]" value="<?= $bulan['nama_bulan'] ?>">
+                                                                        <input type="hidden" name="nominal[]" value="<?= $value['nominal'] ?>">
+                                                                        <label class="form-check-label">
+                                                                            <?= $value['nama_tagihan'].' '.$bulan['nama_bulan'] ?>
+                                                                        </label> <br>
+                                                                        <label class="form-check-label text-danger">
+                                                                            Rp. <?= number_format($value['nominal'], 0, ",", ".") ?>
+                                                                        </label>
+                                                                    </div>
+                                                                <?php endif ?>
                                                             <?php endif ?>
-                                                        <?php endif ?>
+                                                        <?php endforeach ?>
                                                     <?php endforeach ?>
-                                                    </div>
-                                                <?php endforeach ?>
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="accordion-item">
@@ -99,26 +100,40 @@
                                                 </button>
                                             </h2>
                                             <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-                                            <?php foreach( $jenis_tagihan as $tagihan ) : ?>
                                                 <div class="accordion-body">
-                                                        <?php if( $tagihan['kode_tahun_ajaran'] == $students['kode_tahun_ajaran'] ) : ?>
-                                                            <?php if( $tagihan['nama_tagihan'] <> 'SPP' ) : ?>
-                                                                    <input class="form-check-input" type="checkbox" name="kode_tagihan[]" value="<?= $tagihan['kode_tagihan'] ?>">
-                                                                    <input type="hidden" name="keterangan[]" value="<?= $tagihan['nama_tagihan'] ?>">
-                                                                    <input type="hidden" name="nominal[]" value="<?= $tagihan['nominal'] ?>">
+                                                    <?php foreach( $jenis_tagihan as $value ) : ?>
+                                                        <?php if( $value['kode_tahun_ajaran'] == $students['kode_tahun_ajaran'] ) : ?>
+                                                            <?php if( $value['nama_tagihan'] <> 'SPP' ) : ?>
+                                                                <div class="form-check mb-2">
+                                                                    <input class="form-check-input" type="checkbox" name="kode_tagihan[]" value="<?= $value['kode_tagihan'] ?>">
+                                                                    <!-- <input type="hidden" name="kode_tagihan[]" value="<?= $value['kode_tagihan'] ?>"> -->
+                                                                    <input type="hidden" name="keterangan[]" value="<?= $value['nama_tagihan'] ?>">
+                                                                    <input type="hidden" name="nominal[]" value="<?= $value['nominal'] ?>">
                                                                     <label class="form-check-label">
-                                                                        Tagihan <?= $tagihan['nama_tagihan'] ?>
+                                                                        Pembayaran <?= $value['nama_tagihan'] ?>
                                                                     </label> <br>
-                                                                    <label class="form-check-label text-danger ms-4">
-                                                                        Rp. <?= $tagihan['nominal'] ?>
+                                                                    <label class="form-check-label text-danger">
+                                                                        Rp. <?= number_format($value['nominal'], 0, ",", ".") ?>
                                                                     </label>
+                                                                </div>
                                                             <?php endif ?>
                                                         <?php endif ?>
+                                                    <?php endforeach ?>
                                                 </div>
-                                            <?php endforeach ?>
                                             </div>
                                         </div>
-                                        
+                                        <!-- <div class="accordion-item">
+                                            <h2 class="accordion-header" id="headingThree">
+                                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                                Tagihan Lainnya
+                                                </button>
+                                            </h2>
+                                            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                                                <div class="accordion-body">
+                                                <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                                                </div>
+                                            </div>
+                                        </div> -->
                                     </div><!-- End Default Accordion Example -->
 
                                     <div class="col-12 mb-3 mt-4 modal-footer">
@@ -130,7 +145,7 @@
                             </div>
                             <div class="dataTable-bottom">
                                 <div class="dataTable-info">
-                                    Showing 1 to 1 of 1 entries
+                                    *Harap Pastikan Pembayaran
                                 </div>
                                 <nav class="dataTable-pagination">
                                     <ul class="dataTable-pagination-list"></ul>
