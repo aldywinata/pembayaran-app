@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Dashboard <?= $title ?></title>
+  <title><?= $title ?></title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -14,7 +14,7 @@
   <link href="<?= base_url('assets/vendor/') ?>img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Css buatan -->
-  <link href="<?= base_url(); ?>assets/css/style.css" rel="stylesheet">
+  <!-- <link href="<?= base_url(); ?>assets/css/style.css" rel="stylesheet"> -->
 
   <!-- Google Fonts -->
   <link href="https://fonts.gstatic.com" rel="preconnect">
@@ -22,11 +22,6 @@
 
   <!-- Vendor CSS Files -->
   <link href="<?= base_url('assets/vendor/') ?>vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="<?= base_url('assets/vendor/') ?>vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="<?= base_url('assets/vendor/') ?>vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-  <link href="<?= base_url('assets/vendor/') ?>vendor/quill/quill.snow.css" rel="stylesheet">
-  <link href="<?= base_url('assets/vendor/') ?>vendor/quill/quill.bubble.css" rel="stylesheet">
-  <link href="<?= base_url('assets/vendor/') ?>vendor/remixicon/remixicon.css" rel="stylesheet">
   <link href="<?= base_url('assets/vendor/') ?>vendor/simple-datatables/style.css" rel="stylesheet">
 
   <!-- Template Main CSS File -->
@@ -34,19 +29,19 @@
 
 </head>
 
-<body>
+<body class="">
 <!-- <main id="main" class="main"> -->
     <!-- <section class="section"> -->
-        <div class="row">
-            <div class="col-lg-12">
+        <!-- <div class="row"> -->
+            <!-- <div class="col-lg-12"> -->
                 <div class="card">
-                    <div class="card-body">
+                    <div class="card-body ">
                         <h5 class="card-title text-center">Invoice Pembayaran</h5>
 
                         <!-- <button type="button" class="btn btn-primary mb-2"  data-bs-toggle="modal" data-bs-target="#basicModal"><i class="ri-add-fill"></i>Tambah</button> -->
 
-                        <div class="dataTable-wrapper dataTable-loading no-footer sortable searchable fixed-columns search-result">
-                            <div class="card-body">
+                        <div class=" dataTable-wrapper dataTable-loading no-footer sortable searchable fixed-columns search-result">
+                            <div class="card-body bg-white">
                                 <table border="0">
                                     <tr>
                                         <td style="width: 180px;">Kode Pembayaran</td>
@@ -280,8 +275,8 @@
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
+            <!-- </div> -->
+        <!-- </div> -->
     <!-- </section> -->
 <!-- </main> -->
 
@@ -290,11 +285,7 @@
     
     
     <!-- Vendor JS Files -->
-    <script src="<?= base_url('assets/vendor/') ?>vendor/apexcharts/apexcharts.min.js"></script>
     <script src="<?= base_url('assets/vendor/') ?>vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="<?= base_url('assets/vendor/') ?>vendor/chart.js/chart.min.js"></script>
-    <script src="<?= base_url('assets/vendor/') ?>vendor/echarts/echarts.min.js"></script>
-    <script src="<?= base_url('assets/vendor/') ?>vendor/quill/quill.min.js"></script>
     <script src="<?= base_url('assets/vendor/') ?>vendor/simple-datatables/simple-datatables.js"></script>
     <script src="<?= base_url('assets/vendor/') ?>vendor/tinymce/tinymce.min.js"></script>
     <script src="assets/vendor/php-email-form/validate.js"></script>
@@ -303,10 +294,5 @@
     <!-- Template Main JS File -->
     <script src="<?= base_url('assets/vendor/') ?>js/main.js"></script>
 
-    
-    
 </body>
-    <script type="text/javascript">
-        windows.print();
-    </script>
 </html>

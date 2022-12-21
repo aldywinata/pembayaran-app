@@ -117,7 +117,7 @@
                                 </table> 
                                 <div class="modal-footer mt-5">
                                     <a href="<?= base_url('RiwayatPembayaran');?>"><button type="button" class="btn btn-secondary me-2 mb-3" data-bs-dismiss="modal"><i class="bx bx-arrow-back"></i></button></a>
-                                    <a href="<?= base_url('RiwayatPembayaran/')?>print/<?= $staLunas['kode_pembayaran'] ?>"><button type="button" class="btn btn-primary me-2 mb-3" data-bs-dismiss="modal"><i class="bi bi-printer"></i></button></a>
+                                    <a href="<?= base_url('RiwayatPembayaran/')?>print/<?= $staLunas['kode_pembayaran'] ?>"><button type="button" class="btn btn-primary me-2 mb-3"><i class="bi bi-printer"></i></button></a>
                                     <!-- <button type="submit" class="btn btn-primary me-2 mb-3"><i class="bi printer-fill"></i> Ubah</button> -->
                                 </div>            
                             </div>
