@@ -64,7 +64,7 @@
                                         <tbody>
                                             <?php if( empty($pembayarans) ) : ?>
                                                 <tr>
-                                                    <td colspan="5" align="center"><?= "Tidak Ada Data" ?></td>
+                                                    <td colspan="5" class="text-center text-danger"><?= "Tidak Ada Data" ?></td>
                                                 </tr>
                                             <?php else : ?>
                                                 <?php $no = 1; foreach( $pembayarans as $pembayaran ) : ?>

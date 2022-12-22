@@ -40,42 +40,52 @@
                                     <thead class="table-secondary">
                                         <tr>
                                             <th scope="col" data-sortable>
-                                            <a href="#" class="dataTable-sorter" >NO</a>
+                                                <a href="#" class="dataTable-sorter" >NO</a>
                                             </th>
                                             <th scope="col" data-sortable>
-                                            <a href="#" class="dataTable-sorter" >BUKTI TRANSFER</a>
+                                                <a href="#" class="dataTable-sorter" >TANGGAL PEMBAYARAN</a>
                                             </th>
                                             <th scope="col" data-sortable>
-                                            <a href="#" class="dataTable-sorter" >KODE PEMBAYARAN</a>
+                                                <a href="#" class="dataTable-sorter" >KODE PEMBAYARAN</a>
                                             </th>
                                             <th scope="col" data-sortable>
-                                            <a href="#" class="dataTable-sorter" >TANGGAL PEMBAYARAN</a>
+                                                <a href="#" class="dataTable-sorter" >METODE PEMBAYARAN</a>
                                             </th>
                                             <th scope="col" data-sortable>
-                                            <a href="#" class="dataTable-sorter" >TOTAL PEMBAYARAN</a>
+                                                <a href="#" class="dataTable-sorter" >TOTAL PEMBAYARAN</a>
                                             </th>
                                             <th scope="col" data-sortable>
-                                            <a href="#" class="dataTable-sorter" >AKSI</a>
+                                                <a href="#" class="dataTable-sorter" >AKSI</a>
                                             </th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <?php $no=1; foreach( $staPem as $lunas ) : ?>
-                                            <?php if( $lunas['status_pembayaran'] == 'LUNAS' ) : ?>
-                                                <tr>
-                                                    <th scope="row"><?= $no++ ?></th>
-                                                    <td><?= $lunas['img_pembayaran'] ?></td>
-                                                    <td><?= $lunas['kode_pembayaran'] ?></td>
-                                                    <td><?= date('d-m-Y', strtotime($lunas['tanggal_pembayaran'])) ?></td>
-                                                    <td>Rp. <?= number_format($lunas['total'], 0, ",", ".") ?></td>
-                                                    <td>
-                                                    <a href="<?= base_url('RiwayatPembayaran/') ?>detail/<?= $lunas['kode_pembayaran'] ?>" class="btn btn-info" ><i class="bi bi-info-circle"></i></a>
-                                                    <!-- <a href="<?= base_url('InputPembayaran/') ?>pembayaran/<?= $lunas['nis'] ?>" class="btn btn-warning"><i class="bi bi-cash"></i></a> -->
-                                                    <!-- <a href="<?= base_url('InputPembayaran/') ?>hapus/<?= $lunas['nis'] ?>" class="btn btn-danger" onclick="return confirm('Yakin ?');"><i class="ri-delete-bin-6-line"></i></a> -->
-                                                    </td>
-                                                </tr>
-                                            <?php endif ?>
-                                        <?php endforeach ?>
+                                        <?php if( empty($staPem) ) : ?>
+                                            <tr>
+                                                <td colspan="6" class="text-center text-danger"><?= "Tidak Ada Data" ?></td>
+                                            </tr>
+                                        <?php else : ?>
+                                            <?php $no=1; foreach( $staPem as $lunas ) : ?>
+                                                <?php if( $lunas['status_pembayaran'] == 'LUNAS' ) : ?>
+                                                    <tr>
+                                                        <th scope="row"><?= $no++ ?></th>
+                                                        <td><?= date('d-m-Y', strtotime($lunas['tanggal_pembayaran'])) ?></td>
+                                                        <td><?= $lunas['kode_pembayaran'] ?></td>
+                                                        <td><?= $lunas['metode_pembayaran'] ?></td>
+                                                        <td>Rp. <?= number_format($lunas['total'], 0, ",", ".") ?></td>
+                                                        <td>
+                                                        <a href="<?= base_url('RiwayatPembayaran/') ?>detail/<?= $lunas['kode_pembayaran'] ?>" class="btn btn-info" ><i class="bi bi-info-circle"></i></a>
+                                                        <!-- <a href="<?= base_url('InputPembayaran/') ?>pembayaran/<?= $lunas['nis'] ?>" class="btn btn-warning"><i class="bi bi-cash"></i></a> -->
+                                                        <!-- <a href="<?= base_url('InputPembayaran/') ?>hapus/<?= $lunas['nis'] ?>" class="btn btn-danger" onclick="return confirm('Yakin ?');"><i class="ri-delete-bin-6-line"></i></a> -->
+                                                        </td>
+                                                    </tr>
+                                                <?php else : ?>
+                                                    <tr>
+                                                        <td colspan="6" class="text-center text-danger"><?= "Tidak Ada Data" ?></td>
+                                                    </tr>
+                                                <?php endif ?>
+                                            <?php endforeach ?>
+                                        <?php endif ?>
                                     </tbody>
                                 </table>
                             </div>

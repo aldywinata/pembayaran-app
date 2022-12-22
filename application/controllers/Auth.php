@@ -45,14 +45,15 @@ class Auth extends CI_Controller {
 					'level' => $users['level']
 				];
 
-				$this->session->set_userdata($data);
-
 				if( $users['level'] == 'ADMINISTRATOR' ){
+					$this->session->set_userdata($data);
 					redirect('dashboard');
 				}elseif ( $users['level'] == 'PIMPINAN' ){
+					$this->session->set_userdata($data);
 					redirect('dashboard');
 				}elseif( $users['level'] == 'PETUGAS' ){
-					redirect('petugas');
+					$this->session->set_userdata($data);
+					redirect('dashboard');
 				}else{
 					$this->session->set_flashdata('message',
 					'<div class="alert alert-danger" role="alert">
@@ -78,10 +79,9 @@ class Auth extends CI_Controller {
 					'nama_siswa' => $students['nama_siswa']
 				];
 
-				$this->session->set_userdata($data);
-
 				if( $students['status_siswa'] == 'AKTIF' || $students['status_siswa'] == 'PINDAH MASUK' ){
-					redirect('students');
+					$this->session->set_userdata($data);
+					redirect('dashboard/student');
 				}elseif( $students['status_siswa'] == 'LULUS' ){
 					$this->session->set_flashdata('message',
 					'<div class="alert alert-danger" role="alert">

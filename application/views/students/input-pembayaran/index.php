@@ -5,7 +5,6 @@
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="">Home</a></li>
                 <li class="breadcrumb-item"><a href="">Input Pembayaran</a></li>
-                <li class="breadcrumb-item active">Pembayaran</li>
             </ol>
         </nav>
     </div><!-- End Page Title -->
@@ -55,13 +54,11 @@
                             <div class="dataTable-container">
                                 <h5 class="card-title">Tagihan</h5>
 
-                                <form action="<?= base_url('InputPembayaran/') ?>add" method="post">
+                                <form action="<?= base_url('Pembayaran/') ?>add" method="post">
 
                                     <input type="hidden" name="kode_pembayaran" value="<?= $kodeGenerate ?>">
                                     <input type="hidden" name="nis" value="<?= $students['nis'] ?>">
-                                    <input type="hidden" name="status_pembayaran" value="PROSES">
-                                    <input type="hidden" name="metode_pembayaran" value="CASH">
-                                    <input type="hidden" name="bank_pembayaran" value="-">
+                                    <input type="hidden" name="status_pembayaran" value="KONFIRMASI">
                                     <!-- <input type="text" name="id[]" value=""> -->
 
                                     <div class="accordion" id="accordionExample">

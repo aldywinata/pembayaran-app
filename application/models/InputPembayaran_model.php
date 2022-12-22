@@ -30,11 +30,15 @@ class InputPembayaran_model extends CI_Model{
     }
 
     public function addPembayaran(){
-        $status = "PROSES";
+        $status = $this->input->post('status_pembayaran');
+        $metode = $this->input->post('metode_pembayaran');
+        $bank = $this->input->post('bank_pembayaran');
         
         $data = [
             'kode_pembayaran' => $this->input->post('kode_pembayaran'),
-            'status_pembayaran' => $status
+            'status_pembayaran' => $status,
+            'metode_pembayaran' => $metode,
+            'bank_pembayaran' => $bank
         ];
 
         $this->db->insert('tbl_pembayaran', $data);
